@@ -19,7 +19,7 @@ ScreenGui.Enabled = true
 local MainFrame = Instance.new("Frame")
 MainFrame.Size = UDim2.new(0, 350, 0, 250)
 MainFrame.Position = UDim2.new(0.02, 0, 0.2, 0)
-MainFrame.BackgroundColor3 = Color3.fromRGB(30, 20, 50) -- Темно-фиолетовый фон
+MainFrame.BackgroundColor3 = Color3.fromRGB(30, 20, 50)
 MainFrame.BorderSizePixel = 0
 MainFrame.Parent = ScreenGui
 MainFrame.Visible = false
@@ -103,10 +103,10 @@ TitleCorner.Parent = TitleLabel
 -- Добавляем "Made by Hermitage"
 local MadeByLabel = Instance.new("TextLabel")
 MadeByLabel.Size = UDim2.new(1, 0, 0, 20)
-MadeByLabel.Position = UDim2.new(0, 0, 0.9, 0) -- Внизу окна
+MadeByLabel.Position = UDim2.new(0, 0, 0.9, 0)
 MadeByLabel.BackgroundTransparency = 1
 MadeByLabel.Text = "Made by Hermitage"
-MadeByLabel.TextColor3 = Color3.fromRGB(150, 100, 200) -- Более мягкий фиолетовый
+MadeByLabel.TextColor3 = Color3.fromRGB(150, 100, 200)
 MadeByLabel.TextSize = 12
 MadeByLabel.Font = Enum.Font.SourceSansBold
 MadeByLabel.Parent = MainFrame
@@ -150,13 +150,11 @@ local function createTab(name, positionY, callback)
     TabCorner.Parent = tabButton
 
     tabButton.MouseButton1Click:Connect(function()
-        -- Сбрасываем цвет всех вкладок
         for _, child in pairs(TabsFrame:GetChildren()) do
             if child:IsA("TextButton") then
                 child.BackgroundColor3 = Color3.fromRGB(50, 40, 70)
             end
         end
-        -- Подсвечиваем выбранную вкладку
         tabButton.BackgroundColor3 = Color3.fromRGB(70, 50, 90)
         callback()
     end)
@@ -225,8 +223,8 @@ Marker.Parent = workspace
 Marker.Transparency = 1
 Marker.Material = Enum.Material.Neon
 
-local MARKER_RADIUS = 18 -- Для Autodive
-local MARKER_RADIUS_AUTOREC = 20 -- Для AutoRec
+local MARKER_RADIUS = 18
+local MARKER_RADIUS_AUTOREC = 20
 local lastMoveTime = 0
 local MOVE_COOLDOWN = 0.1
 
@@ -250,10 +248,9 @@ local function moveToMarker(targetPosition)
     end
 end
 
--- Открытие/закрытие UI по F1 (перемещено выше)
+-- Открытие/закрытие UI по F1
 UserInputService.InputBegan:Connect(function(input, gameProcessed)
     if input.KeyCode == Enum.KeyCode.F1 and not gameProcessed then
-        print("F1 pressed, gameProcessed:", gameProcessed) -- Отладка
         MainFrame.Visible = not MainFrame.Visible
         showNotification(MainFrame.Visible and "UI Opened" or "UI Closed", 1)
     end
@@ -262,19 +259,14 @@ end)
 -- Ждём, пока мяч появится в игре (для Autodive), с таймаутом
 local ballFound = false
 local waitTime = 0
-local maxWaitTime = 5 -- Ждем максимум 5 секунд
+local maxWaitTime = 5
 while not ballFound and waitTime < maxWaitTime do
     if workspace:FindFirstChild("Ball") then
         ballFound = true
-        print("Ball found in workspace")
         break
     end
     wait(0.1)
     waitTime = waitTime + 0.1
-end
-
-if not ballFound then
-    warn("Ball not found in workspace after 5 seconds, proceeding without it")
 end
 
 -- AutoRec логика (движение к мячу)
@@ -335,18 +327,6 @@ end)
 UserInputService.InputEnded:Connect(function(input)
     if input.KeyCode == Enum.KeyCode.LeftControl then
         cameraLockEnabled = false
-    end
-end)
-
--- Интеграция AHK-скрипта для Autodive (3 -> Ctrl + 2)
-UserInputService.InputBegan:Connect(function(input, gameProcessed)
-    if input.KeyCode == Enum.KeyCode.Three and not gameProcessed then
-        if autodiveEnabled then
-            wait(0.05) -- Sleep 50 мс
-            game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.Two, false, game)
-            wait(0.0002) -- Sleep 0.2 мс (в Roblox минимальная задержка ~0.0002)
-            game:GetService("VirtualInputManager"):SendKeyEvent(false, Enum.KeyCode.Two, false, game)
-        end
     end
 end)
 
@@ -474,5 +454,3 @@ AutoRecButton.Visible = true
 AutoDiveButton.Visible = true
 ChatLogsButton.Visible = true
 TiltScriptButton.Visible = true
-
-print("Script loaded successfully") -- Отладка
