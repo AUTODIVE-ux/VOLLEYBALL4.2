@@ -421,7 +421,7 @@ ContactLabel.Position = UDim2.new(0, 0, 0, 20)
 ContactLabel.BackgroundTransparency = 1
 ContactLabel.Text = "DISCORD: @truthautodive"
 ContactLabel.TextColor3 = Color3.fromRGB(200, 150, 255)
-ContactLabel.TextSize = 32
+ContactLabel.TextSize = 12
 ContactLabel.Font = Enum.Font.SourceSansBold
 ContactLabel.Parent = InfoContent
 
