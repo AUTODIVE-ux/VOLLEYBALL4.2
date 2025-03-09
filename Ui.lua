@@ -429,11 +429,11 @@ DiscordLabel.Parent = InfoContent
 -- Лейбл для "@truthautodive"
 local TruthLabel = Instance.new("TextLabel")
 TruthLabel.Size = UDim2.new(1, 0, 0, 30)
-TruthLabel.Position = UDim2.new(0, 0, 0, 50)
+TruthLabel.Position = UDim2.new(0, 0, 0, 55)  -- Расположен ниже "DISCORD:"
 TruthLabel.BackgroundTransparency = 1
 TruthLabel.Text = "@truthautodive"
 TruthLabel.TextColor3 = Color3.fromRGB(200, 150, 255)
-TruthLabel.TextSize = 15  -- Размер текста 15
+TruthLabel.TextSize = 21  -- Размер текста 21
 TruthLabel.Font = Enum.Font.SourceSansBold
 TruthLabel.Parent = InfoContent
 
