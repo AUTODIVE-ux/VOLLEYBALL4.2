@@ -415,15 +415,28 @@ InfoContent.BackgroundTransparency = 1
 InfoContent.Parent = ContentFrame
 InfoContent.Visible = false
 
-local ContactLabel = Instance.new("TextLabel")
-ContactLabel.Size = UDim2.new(1, 0, 0, 30)
-ContactLabel.Position = UDim2.new(0, 0, 0, 20)
-ContactLabel.BackgroundTransparency = 1
-ContactLabel.Text = "DISCORD: @truthautodive"
-ContactLabel.TextColor3 = Color3.fromRGB(200, 150, 255)
-ContactLabel.TextSize = 16
-ContactLabel.Font = Enum.Font.SourceSansBold
-ContactLabel.Parent = InfoContent
+-- Лейбл для "DISCORD:"
+local DiscordLabel = Instance.new("TextLabel")
+DiscordLabel.Size = UDim2.new(1, 0, 0, 30)
+DiscordLabel.Position = UDim2.new(0, 0, 0, 20)
+DiscordLabel.BackgroundTransparency = 1
+DiscordLabel.Text = "DISCORD:"
+DiscordLabel.TextColor3 = Color3.fromRGB(200, 150, 255)
+DiscordLabel.TextSize = 19  -- Размер текста 19
+DiscordLabel.Font = Enum.Font.SourceSansBold
+DiscordLabel.Parent = InfoContent
+
+-- Лейбл для "@truthautodive"
+local TruthLabel = Instance.new("TextLabel")
+TruthLabel.Size = UDim2.new(1, 0, 0, 30)
+TruthLabel.Position = UDim2.new(0, 0, 0, 50)
+TruthLabel.BackgroundTransparency = 1
+TruthLabel.Text = "@truthautodive"
+TruthLabel.TextColor3 = Color3.fromRGB(200, 150, 255)
+TruthLabel.TextSize = 15  -- Размер текста 15
+TruthLabel.Font = Enum.Font.SourceSansBold
+TruthLabel.Parent = InfoContent
+
 
 -- Функция для скрытия всего содержимого
 local function hideAllContent()
